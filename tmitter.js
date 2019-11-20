@@ -41,7 +41,7 @@ function trigger(args) {
 	});
 };
 
-module.exports = function tMitter(){
+module.exports.tmitter = function tMitter(){
 	return {
 		_listeners: [],
 		on: on,

@@ -1,4 +1,4 @@
-const tmitter = require('./tmitter.js')
+const { tmitter } = require('./tmitter.js')
 const assert = require('assert')
 var v1Event = tmitter();
 
