@@ -1,18 +1,18 @@
 const tmitter = require('./tmitter.js')
 const assert = require('assert')
-var events = tmitter({}, ['v1']);
+var v1Event = tmitter();
 
 
 var v1=0;
 function onV1(){
   v1++;
 }
-events.on('v1', onV1);
+v1Event.on(onV1);
 
-events.trigger('v1');
+v1Event.trigger();
 assert.equal(v1,1,'v1 event trigger once');
 
-events.off('v1', onV1);
-events.trigger('v1');
+v1Event.off(onV1);
+v1Event.trigger();
 assert.equal(v1,1,'v1 event trigger twice, but events was removed');
 

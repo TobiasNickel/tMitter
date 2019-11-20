@@ -3,9 +3,8 @@ minimalistic emitter-system in Javascript, learn maximal 4 method, that you migh
 
 
 ```js
-var b = tMitter({}, ['update']);
-b.on('update',function(argument){console.log('b has updated');});
-b.trigger('update', argument);
-// output: b has updated
+var emitter = tMitter();
+emitter.on(function(argument){console.log('b has updated');});
+emitter.trigger( argument);
 
 ```

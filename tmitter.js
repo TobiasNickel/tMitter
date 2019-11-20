@@ -13,57 +13,41 @@
  *@param event {string} name of the event
  *@param callback {function} the function to be called when the event is triggered
  */
-function on(event, callback) {
-	if (!this._events[event])
-		throw new Error('event "'+event+'" is not available');
-	if (this._events[event].indexOf(callback) === -1)
-		this._events[event].push(callback);
+function on(callback) {
+	if (this._listeners.indexOf(callback) === -1)
+		this._listeners.push(callback);
 }
 /**
  *	method to remove an eventlistener or even all.
  *@param event {string} name of the event where the call back should be removed
  *@param callback {function} that will be removed from the listener
  */
-function off(event, callback) {
-	if (!event) {
-		var that = this;
-		Object.keys(this._events).forEach(function(name){
-			that._events[name] = [];
-		});
-		return;
-	}
+function off(callback) {
 	if (!callback) {
-		this._events[event] = [];
+		this._listeners = [];
 	} else {
-		var index = this._events[event].indexOf(callback);
+		var index = this._listeners.indexOf(callback);
 		if (index!=-1) {
-			this._events[event].splice(index,1);
+			this._listeners.splice(index,1);
 		}
 	}
 }
-	/**
+/**
  *  executing all listener that are registered on the event
- *@param event {string} name of the event to be triggered
- *@args args {mixed} anything that you want to be passed to the listeners callback
+ *@args args {object} anything that you want to be passed to the listeners callback
  */
-function trigger(event, args) {
-	if (!event)
-		return;
-	if (!this._events[event])
-		return;
-	var i = this._events[event].length;
-	while (i--) {
-		this._events[event][i](args);
-	}
-};
-module.exports = function tMitter(object, events){
-	//container to store the listener/callbacks
-	object._events= {};
-	events.forEach(function(name){
-		object._events[name] = [];
+function trigger(args) {
+	this._listeners.forEach(function(listener){
+		listener(args);
 	});
-	object.on= on;
-	object.off= off;
-	object.trigger= trigger;
+};
+
+module.exports = function tMitter(){
+	//container to store the listener/callbacksi
+	const object = {};
+	object._listeners = [];
+	object.on = on;
+	object.off = off;
+	object.trigger = trigger;
 	return object;
 };
