@@ -1,6 +1,7 @@
 const tmitter = require('./tmitter.js')
 const assert = require('assert')
-var events = tmitter({});
+var events = tmitter({}, ['v1']);
+
 
 var v1=0;
 function onV1(){
