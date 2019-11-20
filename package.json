@@ -1,0 +1,26 @@
+{
+  "name": "tmitter",
+  "version": "1.0.1",
+  "description": "minimal event-system in js in 450byte",
+  "main": "tmitter.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasNickel/tMitter.git"
+  },
+  "keywords": [
+    "event",
+    "minimal",
+    "event-system",
+    "emitter",
+    "emit"
+  ],
+  "author": "Tobias Nickel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TobiasNickel/tMitter/issues"
+  },
+  "homepage": "https://github.com/TobiasNickel/tMitter#readme"
+}

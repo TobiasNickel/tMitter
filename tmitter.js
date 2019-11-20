@@ -7,7 +7,6 @@
   * gives an object the ability to handle emittions by defining 4 attributes
   * ._events, .on, .off and .trigger
   */
-tMitter = (function(){
 	/**
 	 *	method that you will want to write in the documentation of your class/object.
 	 *  together with all the events you trigger by yourself
@@ -34,7 +33,10 @@ tMitter = (function(){
 		if (!callback) {
 			delete this._events[event];
 		} else {
-			delete this._events[event][this._events[event].indexOf(callback)];
+			var index = this._events[event].indexOf(callback);
+			if (index!=-1) {
+				this._events[event].splice(index,1);
+			}
 		}
 	}
 		/**
@@ -52,11 +54,11 @@ tMitter = (function(){
 			this._events[event][i](args);
 		}
 	};
-	return function tMitter(object){
+module.exports = function tMitter(object){
 		//container to store the listener/callbacks
 		object._events= {};
 		object.on= on;
 		object.off= off;
 		object.trigger= trigger;
+  		return object;
 	};
-})();
