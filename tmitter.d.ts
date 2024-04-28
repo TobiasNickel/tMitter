@@ -6,7 +6,7 @@ interface ICallback<T> {
 interface ITmitter<T>{
   _listeners: T[]
   on(cb: ICallback<T>): void;
-  off(cb: ICallback<T>): void;
+  off(cb?: ICallback<T>): void;
   trigger(arg: T): void;
 }
 

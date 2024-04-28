@@ -1,6 +1,6 @@
 {
   "name": "tmitter",
-  "version": "3.0.2",
+  "version": "3.0.4",
   "description": "minimal event-system in js in 450byte",
   "main": "tmitter.js",
   "scripts": {
